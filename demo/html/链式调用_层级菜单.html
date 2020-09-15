@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="./jquery-1.8.0.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.btn1').click(function () {
+                $(this).next().stop().slideToggle().parent().siblings().children('ul').slideUp();
+            });
+        });
+    </script>
+    <style>
+        body{
+            font-family:'Microsoft YaHei'; 
+        }
+        body,ul{
+            margin:0;
+            padding:0;
+        }
+        ul{list-style:none;}
+
+        .menu{
+            width:200px;
+            margin:20px auto;
+        }
+
+        .menu .btn1,.menu li ul a{
+            display:block;
+            width:200px;
+            height:30px;
+            line-height:30px;
+            text-decoration:none;
+            background-color:#0094ff;
+            color:#ffffff;
+            font-size:16px;
+            text-indent:10px;
+        }
+
+        .menu .btn1{
+            border-bottom:1px solid #afc6f6;
+        }
+
+        .menu li ul a{
+            font-size:14px;
+            text-indent:20px;
+            background-color:#7aa1ef;
+        }
+        .menu li ul li{
+            border-bottom:1px solid #afc6f6;
+        }
+        .menu li ul{
+            display:none;
+        }
+        .menu li ul.current{
+            display:block;
+        }
+        .menu li ul li a:hover{
+            background-color:#f6b544;
+        }
+    </style>
+    <title></title>
+</head>
+<body>
+    <ul class="menu">
+        <li>
+            <a class="btn1" href="#">水果</a>
+            <ul class="current">
+                <li><a href="#">苹果</a></li>
+                <li><a href="#">香蕉</a></li>
+                <li><a href="#">桃子</a></li>
+            </ul>
+        </li>
+        <li>
+            <a class="btn1" href="#">蔬菜</a>
+            <ul>
+                <li><a href="#">青菜</a></li>
+                <li><a href="#">萝卜</a></li>
+                <li><a href="#">西红柿</a></li>
+            </ul>
+        </li>
+        <li>
+            <a class="btn1" href="#">肉类</a>
+            <ul>
+                <li><a href="#">牛肉</a></li>
+                <li><a href="#">猪肉</a></li>
+                <li><a href="#">羊肉</a></li>
+            </ul>
+        </li>
+    </ul>
+</body>
+</html>

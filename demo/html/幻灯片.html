@@ -1,0 +1,209 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        .slide{
+            width:760px;
+            height:270px;
+            margin:50px auto 0;
+            background-color:gold;
+            position:relative;
+            overflow:hidden;
+        }
+        .slide_list{
+            position:absolute;
+            left:0;
+            top:0;
+            width:760px;
+            height:270px;
+            list-style:none;
+        }
+        .slide_list li{
+            width:760px;
+            height:270px;
+            position:absolute;
+            top:0;
+            left:0;
+        }
+        .slide li div{
+            text-align:center;
+            height:270px;
+            line-height:240px;
+            font-size:100px;
+        }
+        .prev, .next {
+            width: 90px;
+            height: 270px;
+            float: left;
+            background-color: #000;
+            color: #fff;
+            font-size: 90px;
+            text-align: center;
+            line-height: 240px;
+            opacity: 0.2;
+            filter: alpha(opacity=20);
+            cursor: pointer;
+        }
+        .next {
+            float: right;
+        }
+        .points{
+            height:30px;
+            width:150px;
+            position:absolute;
+            bottom:20px;
+            left:50%;
+            margin-left:-75px;
+            list-style:none;
+        }
+        .points li{
+            width:16px;
+            height:16px;
+            display:inline-block;
+            margin:7px 5px;
+            border:1px solid #666;
+            background-color:#666;
+            border-radius:50%;
+            cursor: pointer;
+        }
+        .points .active{
+            background-color:#fff;
+        }
+        .img1{background-color:burlywood;}
+        .img2{background-color:darkseagreen;}
+        .img3{background-color:darksalmon;}
+        .img4{background-color:crimson;}
+    </style>
+    <script type="text/javascript" src="jquery-1.8.0.js"></script>
+    <script type="text/javascript" >
+        $(function () {
+
+            var $slide = $('.slide');
+            var $li = $('.slide_list li');
+            var $len = $li.length;
+            var $points = $('.points');
+            var nowli = 0;
+            var prevli = 0;
+            var $prev = $('.prev');
+            var $next = $('.next');
+            var timer = null;
+            var ismove = false;
+
+            for (var i = 0; i < $len; i++) {
+                var $newli = $('<li>');
+                if (i == 0) {
+                    $newli.addClass('active');
+                }
+                $newli.appendTo($points);
+            }
+            $li.not(':first').css({ 'left': 760 });
+
+            var $points = $('.points li');
+
+            $points.click(function () {
+                nowli = $(this).index();
+
+                if (nowli == prevli) {
+                    return;
+                }
+                $(this).addClass('active').siblings().removeClass('active');
+                move();
+            })
+
+            $prev.click(function () {
+                if (ismove) { return }
+                ismove = true;
+                nowli--;
+                move();
+                eqmove()
+            })
+
+            $next.click(function () {
+                if (ismove) { return }
+                ismove = true;
+                nowli++;
+                move();
+                eqmove()
+            })
+
+            timer = setInterval(autoplay, 3000);
+
+            $slide.mouseenter(function () {
+                clearInterval(timer);
+            })
+            $slide.mouseleave(function () {
+                timer = setInterval(autoplay, 3000);
+            })
+
+            function move() {
+                if (nowli < 0) {
+                    nowli = $len - 1;
+                    prevli = 0;
+                    moveleft();
+                    return;
+                }
+                if (nowli > $len - 1) {
+                    nowli = 0;
+                    prevli = $len - 1;
+                    moveright();
+                    return;
+                }
+                if (nowli > prevli) {
+                    moveright();
+                } else {
+                    moveleft();                    
+                }
+            }
+            function moveright() {
+                $li.eq(nowli).css({ 'left': 760 });
+                $li.eq(nowli).animate({ 'left': 0 });
+                $li.eq(prevli).animate({ 'left': -760 }, function () {
+                    ismove = false;
+                });
+                prevli = nowli;
+            }
+            function moveleft() {
+                $li.eq(nowli).css({ 'left': -760 });
+                $li.eq(nowli).animate({ 'left': 0 });
+                $li.eq(prevli).animate({ 'left': 760 }, function () {
+                    ismove = false;
+                });
+                prevli = nowli;
+            }
+            function eqmove() {
+                $points.eq(nowli).addClass('active').siblings().removeClass('active');
+            }
+            function autoplay() {
+                nowli++;
+                move();
+                eqmove();
+            }
+        })
+    </script>
+</head>
+<body>
+    <div class="slide">
+        <ul class="slide_list">
+            <li class="img1"><div>幻灯片一</div></li>
+            <li class="img2"><div>幻灯片二</div></li>
+            <li class="img3"><div>幻灯片三</div></li>
+            <li class="img4"><div>幻灯片四</div></li>
+        </ul>
+        <div class="prev"><</div>
+        <div class="next">></div>
+        <ul class="points">
+            <!--<li class="active"></li>
+            <li></li>
+            <li></li>
+            <li></li>-->
+        </ul>
+    </div>
+</body>
+</html>

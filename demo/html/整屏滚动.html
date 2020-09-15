@@ -1,0 +1,100 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="css/整屏滚动.css" />
+    <script type="text/javascript" src="jquery-1.8.0.js"></script>
+    <script type="text/javascript" src="js/jquery.mousewheel.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var $screen = $('.pages_con');
+            var $pages = $('.pages');
+            var $len = $pages.length;
+            var $h = $(window).height();
+            var $points = $('.points li');
+            var timer = null;
+
+            var $nowscreen = 0;
+
+            $pages.css({ 'height': $h });
+            $pages.eq(0).addClass('moving');
+
+            $points.click(function () {
+                $nowscreen = $(this).index();
+                move();
+            })
+            $(window).mousewheel(function (event, dat) {
+                clearTimeout(timer);
+                timer = setTimeout(function () {
+                    if (dat == -1) {
+                        $nowscreen++;
+                    } else {
+                        $nowscreen--;
+                    }
+                    if ($nowscreen < 0) {
+                        $nowscreen = 0
+                    }
+                    if ($nowscreen > $len - 1) {
+                        $nowscreen = $len - 1
+                    }
+                    move();
+                }, 300);
+            })
+
+            function move() {
+                $screen.animate({ 'top': -$h * $nowscreen },300);
+                $pages.eq($nowscreen).addClass('moving').siblings().removeClass('moving');
+                $points.eq($nowscreen).addClass('active').siblings().removeClass('active');
+            }
+        })
+    </script>
+    <title></title>
+</head>
+<body>
+    <div class="pages_con">
+        <div class="pages page1">
+            <div class="main_con">
+                <div class="left_img">yi</div>
+                <div class="right_info">
+                    ----------------------------------------------------------------------------
+                    ------------------------------==========================-----------------------------======
+                </div>
+            </div>
+        </div>
+        <div class="pages page2">
+            <div class="main_con">
+                <div class="left_img"></div>
+                <div class="right_info">
+                    -------------------------=========================+++++++++++++
+                    +++++----------------+++++++====================
+                </div>
+            </div>
+        </div>
+        <div class="pages page3">
+            <div class="main_con">
+                <div class="left_img"></div>
+                <div class="right_info">
+                    -------------------------=========================+++++++++++++
+                    +++++----------------+++++++====================
+                </div>
+            </div>
+        </div>
+        <div class="pages page4">
+            <div class="main_con">
+                <div class="left_img"></div>
+                <div class="right_info">
+                    -------------------------=========================+++++++++++++
+                    +++++----------------+++++++====================
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="points">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+</body>
+</html>

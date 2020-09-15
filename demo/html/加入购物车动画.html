@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <style type="text/css">
+        .chart{
+            position:absolute;
+            right:30px;
+            top:20px;
+        }
+        .count{
+            color:#c31f1f;
+            font-weight:700;
+        }
+
+        .btn{
+            background-color:chocolate;
+            border:2px solid;
+            position:absolute;
+            top:300px;
+            left:60px;
+            width:160px;
+            height:50px;
+        }
+        .point{
+            background-color:red;
+            width:16px;
+            height:16px;
+            display:none;
+            border-radius:50%;
+            position:absolute;
+            top:0;
+            left:0;
+        }
+    </style>
+    <script type="text/javascript" src="./jquery-1.8.0.js" ></script>
+    <script>
+        $(function () {
+            var $btn = $('.btn');
+            var $chart = $('.chart');
+            var $point = $('.point');
+            var $count = $('.count');
+            var $w01 = $btn.outerWidth();
+            var $h01 = $btn.outerHeight();
+            var $w02 = $chart.outerWidth()
+            var $h02 = $chart.outerHeight()
+
+            $btn.click(function () {
+                var oPos01 = $btn.offset();
+                var oPos02 = $chart.offset();
+                
+                $point.css({
+                    'left': oPos01.left + parseInt($w01/2)-8,
+                    'top': oPos01.top + parseInt($h01 / 2) - 8,
+                });
+                $point.show();
+
+                $point.animate({ 'left': oPos02.left + parseInt($w02 / 2) - 8, 'top': oPos02.top + parseInt($h02 / 2) - 8 }, 800, function () {
+                    $point.hide();
+                    var iNum = $count.html();
+                    $count.html(parseInt(iNum) + 1);
+                });
+            })
+        })
+    </script>
+    <title></title>
+</head>
+<body>
+    <div class="chart">购物车<em class="count">0</em></div>
+    <input  type="button" value="加入购物车" class="btn"/>
+    <div class="point"></div>
+</body>
+</html>

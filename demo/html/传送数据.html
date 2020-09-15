@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <script type="text/javascript">
+        window.onload = function () {
+            var oStr = window.location.search;
+            var oBody = document.getElementById('body01');
+            if (oStr != '') {
+                var gStr = oStr.split("=");
+                var sStr = gStr[1];
+                if (sStr == 1) {
+                    oBody.style.backgroundColor = 'gold';
+                } else if (sStr == 2) {
+                    oBody.style.backgroundColor = 'green';
+                } else {
+                    oBody.style.backgroundColor = 'red';
+                }
+            }
+        }
+
+    </script>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body id="body01">
+    <a href="./传送数据.html?aa=1">链接一</a>
+    <a href="./传送数据.html?aa=2">链接二</a>
+    <a href="./传送数据.html?aa=3">链接三</a>
+</body>
+</html>

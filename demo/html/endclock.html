@@ -1,0 +1,38 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" >
+<head>
+    <script>
+        window.onload = function () {
+            function fnTimeleft(){
+                var oNow = new Date();
+                var oDiv = document.getElementById("ASD");
+                var sFuntare = new Date(2020, 6, 7, 8, 30, 0)
+                var iLeft = parseInt((sFuntare - oNow) / 1000);
+                var idays = parseInt(iLeft / 86400);
+                var iHours = parseInt((iLeft % 86400) / 3600);
+                var iMinutes = parseInt(((iLeft % 86400) % 3600) / 60);
+                var iSeconds = parseInt(iLeft % 60);
+                var sTr = "距离高考还有：" + oDiv + "天" + fnToodu(iHours) + "时" + fnToodu(iMinutes) + "分" + fnToodu(iSeconds)+ "秒";
+                oDiv.innerHTML = sTr;
+            }
+
+            fnTimeleft();
+            setInterval(fnTimeleft, 1000);
+
+            function fnToodu(n) {
+                if (n < 10) {
+                    return '0' + n;
+                } else {
+                    return n;
+                }
+            }
+        }
+    </script>
+    <meta charset="utf-8" />
+    <title></title>
+</head>
+<body>
+    <div id="ASD" class="DSA"></div>
+</body>
+</html>

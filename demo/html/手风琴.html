@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style type="text/css">
+        *{
+            margin:0;
+            padding:0;
+        }
+        #accordion{
+            width:700px;
+            height:350px;
+            margin:50px auto 0;
+            position:relative;
+            overflow:hidden;
+            border:1px solid #808080;
+        }
+        #accordion ul{
+            list-style:none;
+        }
+        #accordion ul li{
+            width:620px;
+            height:350px;
+            position:absolute;
+        }
+        #accordion ul li span{
+            display:block;
+            width:19px;
+            height:350px;
+            padding-top:50px;
+            float:left;
+            color:#fff;
+            cursor:pointer;
+        }
+        #accordion ul li div{
+            display:block;
+            width:600px;
+            height:350px;
+            float:right;
+        }
+        .bar01{left:0px;}
+        .bar02{left:620px;}
+        .bar03{left:640px;}
+        .bar04{left:660px;}
+        .bar05{left:680px;}
+        .bar01{background-color:indigo;}
+        .bar02{background-color:darkslateblue;}
+        .bar03{background-color:greenyellow;}
+        .bar04{background-color:tomato;}
+        .bar05{background-color:navy;}
+    </style>
+    <script type="text/javascript" src="./jquery-1.8.0.js"></script>
+    <script type="text/javascript" >
+        $(function () {
+            var $li = $('#accordion li');
+            $li.click(function () {
+                $(this).animate({ 'left': 20 * $(this).index() });
+                $(this).prevAll().each(function () {
+                    $(this).animate({ 'left': 20 * $(this).index() });
+                });
+                $(this).nextAll().each(function () {
+                    $(this).animate({ 'left': 700-20 * (5-$(this).index()) });
+                })
+            });
+        })
+    </script>
+</head>
+<body>
+    <div id="accordion">
+        <ul>
+            <li class="bar01"><span>景色01</span><div style="background-color:aqua;"></div></li>
+            <li class="bar02"><span>景色02</span><div style="background-color:aquamarine;"></div></li>
+            <li class="bar03"><span>景色03</span><div style="background-color:bisque;"></div></li>
+            <li class="bar04"><span>景色04</span><div style="background-color:blueviolet;"></div></li>
+            <li class="bar05"><span>景色05</span><div style="background-color:chocolate;"></div></li>
+        </ul>
+    </div>
+</body>
+</html>

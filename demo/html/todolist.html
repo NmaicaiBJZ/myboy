@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <style type="text/css">
+        .list_con{
+            width:600px;
+            margin:50px auto 0;
+        }
+        .inputtxt{
+            width:550px;
+            height:30px;
+            border:1px solid #ccc;
+        }
+        .inputbtn{
+            width:40px;
+            height:32px;
+            padding:0;
+            border:1px solid #ccc;
+        }
+        .list{
+            margin:0;
+            padding:0;
+            list-style:none;
+            margin-top:20px;
+        }
+        .list li{
+            height:40px;
+            line-height:40px;
+            border-bottom:1px solid #ccc;
+        }
+        .list li span{
+            float:left;
+        }
+        .list li a{
+            float:right;
+            text-decoration:none;
+            margin:0 10px;
+        }
+    </style>
+    <script type="text/javascript" src="jquery-1.8.0.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var $inputtex = $('#text');
+            var $btn = $('#btn1');
+            var $ul = $('#list');
+
+            $btn.click(function () {
+                var $val = $inputtex.val();
+                if ($val == "") {
+                    alert("请输入内容!");
+                    return;
+                }
+                var $li = $('<li><span>' + $val + '</span><a href="javascript:; " class="up">⇧</a><a href="javascript: ; " class="down">⇩</a><a href="javascript: ; " class="del">清除</a></li>');
+                $ul.append($li);
+                $inputtex.val("");
+            });
+            $('.list').delegate('a', 'click', function () {
+                var $handler = $(this).prop('class');
+                if ($handler == 'del') {
+                    $(this).parent().remove();
+                }
+                if ($handler == 'up') {
+                    if ($(this).parent().prev().length == 0) {
+                        alert("到顶了!");
+                    }
+                    $(this).parent().insertBefore($(this).parent().prev());
+                }
+                if ($handler == 'down') {
+                    if ($(this).parent().next().length == 0) {
+                        alert("到底了！");
+                    }
+                    $(this).parent().insertAfter($(this).parent().next());
+                }
+            })
+        })
+    </script>
+    <title></title>
+</head>
+<body>
+    <div class="list_con">
+        <h2>To do list</h2>
+        <input type="text" id="text" class="inputtxt" />
+        <input type="button" id="btn1" class="inputbtn" value="增加"/>
+        <ul id="list" class="list">
+            <li><span>html</span><a href="javascript:;" class="up">⇧</a><a href="javascript:;" class="down">⇩</a><a href="javascript:;" class="del">清除</a></li>
+            <li><span>css</span><a href="javascript:;" class="up">⇧</a><a href="javascript:;" class="down">⇩</a><a href="javascript:;" class="del">清除</a></li>
+            <li><span>javascript</span><a href="javascript:;" class="up">⇧</a><a href="javascript:;" class="down">⇩</a><a href="javascript:;" class="del">清除</a></li>
+        </ul>
+    </div>
+</body>
+</html>

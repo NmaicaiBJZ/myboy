@@ -1,0 +1,74 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <style type="text/css">
+        .Slidebar_con{
+            width:650px;
+            height:32px;
+            margin:50px auto 0;
+        }
+        .slidebar{
+            width:600px;
+            height:30px;
+            border:1px solid #666;
+            float:left;
+            position:relative;
+        }
+        .slidebar .dragbar{
+            width:30px;
+            height:30px;
+            background-color:gold;
+            cursor:pointer;
+            position:absolute;
+            left:0;
+            top:0;
+        }
+        .slidebar .progress{
+            width:0px;
+            height:30px;
+            background-color:#808080;
+            position:absolute;
+            left:0;
+            top:0;
+        }
+        .slide_count{
+            padding:0;
+            float:right;
+            width:40px;
+            height:30px;
+            border:1px solid #666;
+            text-align:center;
+            font-size:16px;
+        }
+    </style>
+    <script type="text/javascript" src="jquery-1.8.0.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript" >
+        $(function () {
+            $('.dragbar').draggable({
+                axis: 'x',                              //只能在x轴滑动
+                containment: 'parent',     //不能超过父元素
+                opacity: 0.6,                       //滑动时透明度
+                drag: function (ev, ui) {    //滑动时回调
+                    //console.log(ui);          //ui是每滑动一次，元素的数组数据，可查看
+                    var nowleft = ui.position.left;  //position便是相对于父元素的位置数据
+                    $('.progress').css({ 'width': nowleft });
+                    $('.slide_count').val(parseInt(nowleft * 100 / 570));
+                }
+            });
+        })
+    </script>
+    <title></title>
+</head>
+<body>
+    <div class="Slidebar_con">
+        <div class="slidebar">
+            <div class="progress"></div>
+            <div class="dragbar"></div>
+        </div>
+        <input type="text" value="0" class="slide_count" />
+    </div>
+</body>
+</html>

@@ -1,0 +1,92 @@
+﻿<!DOCTYPE html>
+
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>自定义滚动条</title>
+    <script type="text/javascript" src="jquery-1.8.0.js"></script>
+    <script type="text/javascript" src="js/jquery-ui.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            var h = $('.pargraph').outerHeight();
+            var hide = h - 500;
+
+            $('.scroll_bar').draggable({
+                containment: 'parent',
+                opacity: 0.6,
+                drag: function (ev, ui) {
+                    var nowtop = ui.position.top;
+                    var nowscroll = parseInt(nowtop / 290 * hide);
+                    $('.pargraph').css({'top': -nowscroll});
+                }
+            })
+        })
+    </script>
+    <style type="text/css">
+        .scroll_con{
+            width:400px;
+            height:500px;
+            border:1px solid #ccc;
+            margin:50px auto 0;
+            position:relative;
+            overflow:hidden;
+        }
+        .pargraph{
+            width:360px;
+            position:absolute;
+            left:0;
+            top:0;
+            padding:10px 20px;
+            font-size:14px;
+            font-family:'Microsoft YaHei';
+            line-height:32px;
+            text-indent:2em;
+        }
+        .scroll_bar_con{
+            width:10px;
+            height:490px;
+            position:absolute;
+            right:5px;
+            top:5px;
+        }
+        .scroll_bar{
+            width:10px;
+            height:200px;
+            background-color:#ccc;
+            position:absolute;
+            left:0;
+            top:0;
+            cursor:pointer;
+            border-radius:5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="scroll_con">
+        <div class="pargraph">
+
+            Change weapon's damage cheater
+            one shot kill in every range without a headshot 在没有射程的每个射程中一次命中
+            Change weapon's damage cheater,one shot kill in every range without
+            a headshot, by using a_____(武器型号） with a final____(他的最终战绩） in______(那张地图）。
+            流血宴厅（Ballroom Blitz）、阿尔贡森林（Argonne Forest）、法欧堡（FAO Fortress）、苏伊士（Suez）、圣康坦的伤痕（The St. Quentin Scar）、西奈沙漠（Sinai Desert）、亚眠（Amiens）、格拉巴山（Monte Grappa）、帝国边缘（Empire’s Edge）、巨兽阴影（Giant Shadow）
+
+            Change weapon's damage cheater
+            one shot kill in every range without a headshot 在没有射程的每个射程中一次命中
+            Change weapon's damage cheater,one shot kill in every range without
+            a headshot, by using a_____(武器型号） with a final____(他的最终战绩） in______(那张地图）。
+            流血宴厅（Ballroom Blitz）、阿尔贡森林（Argonne Forest）、法欧堡（FAO Fortress）、苏伊士（Suez）、圣康坦的伤痕（The St. Quentin Scar）、西奈沙漠（Sinai Desert）、亚眠（Amiens）、格拉巴山（Monte Grappa）、帝国边缘（Empire’s Edge）、巨兽阴影（Giant Shadow）
+
+            Change weapon's damage cheater
+            one shot kill in every range without a headshot 在没有射程的每个射程中一次命中
+            Change weapon's damage cheater,one shot kill in every range without
+            a headshot, by using a_____(武器型号） with a final____(他的最终战绩） in______(那张地图）。
+            流血宴厅（Ballroom Blitz）、阿尔贡森林（Argonne Forest）、法欧堡（FAO Fortress）、苏伊士（Suez）、圣康坦的伤痕（The St. Quentin Scar）、西奈沙漠（Sinai Desert）、亚眠（Amiens）、格拉巴山（Monte Grappa）、帝国边缘（Empire’s Edge）、巨兽阴影（Giant Shadow）
+
+        </div>
+        <div class="scroll_bar_con">
+            <div class="scroll_bar"></div>
+        </div>
+    </div>
+</body>
+</html>
