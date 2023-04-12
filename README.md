@@ -25,7 +25,6 @@ _斜体：_ctrl+I
 
 这是一个[超链接](https://www.baidu.com)
 
-这是一个[相对链接](NmaicaiBJZ.github.io)
+这是一个[相对链接](/demo/text.py)
 
-
-![112233](../hitoriGotohBocchiThe_v1.png)
+![123](/hitoriGotohBocchiThe_v1.png)
