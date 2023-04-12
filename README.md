@@ -27,4 +27,4 @@ _斜体：_ctrl+I
 
 这是一个[相对链接](/demo/text.py)
 
-![123](/hitoriGotohBocchiThe_v1.png)
+![123](https://github.com/NmaicaiBJZ/myboy/blob/master/hitoriGotohBocchiThe_v1.png)
