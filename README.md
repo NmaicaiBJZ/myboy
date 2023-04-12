@@ -16,3 +16,16 @@ _斜体：_ctrl+I
 下<sub>下标</sub>
 
 上<sup>上标</sup>
+
+```
+独 ***英文状态下数字1左边的波浪键***
+特
+快
+```
+
+这是一个[超链接](https://www.baidu.com)
+
+这是一个[相对链接](NmaicaiBJZ.github.io/README.md)
+
+小波奇！
+![112233](../hitoriGotohBocchiThe_v1.png)
