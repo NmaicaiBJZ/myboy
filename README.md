@@ -25,7 +25,7 @@ _斜体：_ctrl+I
 
 这是一个[超链接](https://www.baidu.com)
 
-这是一个[相对链接](NmaicaiBJZ.github.io/README.md)
+这是一个[相对链接](NmaicaiBJZ/README.md)
 
 小波奇！
 ![112233](../hitoriGotohBocchiThe_v1.png)
