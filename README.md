@@ -3,7 +3,7 @@
 ## 嘿嘿
 
 
-这是一个关于github的文本[小实验](https://www.baidu.com)。
+这是一个关于markdown文本的测试[小实验](https://www.baidu.com)。
 
 **粗体：**ctrl+B
 
