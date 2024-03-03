@@ -5,7 +5,7 @@ import time
 class bawangcan_Grab_tickets():
     def __init__(self):
         file = open('./data.json','r')
-        read_jso = json.loads(file.read())
+        read_jso = json.load(file)
         file.close()
         User_Agent = read_jso['User_Agent']
         Token = read_jso['Token']
